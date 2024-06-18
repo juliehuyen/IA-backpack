@@ -1,11 +1,13 @@
 package com.dauphine.juliejoelle;
 
-public class Object {
+import java.util.List;
+
+public class Item {
 
     private int utility;
-    private int[] costs;
+    private List<Integer> costs;
 
-    public Object(int utility, int[] costs) {
+    public Item(int utility, List<Integer> costs) {
         this.utility = utility;
         this.costs = costs;
     }
@@ -18,11 +20,11 @@ public class Object {
         this.utility = utility;
     }
 
-    public int[] getCosts() {
+    public List<Integer> getCosts() {
         return costs;
     }
 
-    public void setCosts(int[] costs) {
+    public void setCosts(List<Integer> costs) {
         this.costs = costs;
     }
 }

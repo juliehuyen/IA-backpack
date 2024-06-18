@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ffa8677e-60a9-4b69-b50f-c4510a0778af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Object.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+    <list default="true" id="ffa8677e-60a9-4b69-b50f-c4510a0778af" name="Changes" comment="✨ Initialize Object and Backpack classes">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Couple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/RandomSelector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Solution.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Item.java" afterDir="false" />
     </list>
+    <list id="54e4ea6b-8a3c-4ef1-9677-d0b56288d7fd" name="Changes by 24208" comment="" />
+    <list id="f1a1ffce-0665-480c-9cbd-2c69f503ffee" name="Changes by joell" comment="" />
+    <list id="ca74bef3-d82e-45d5-9e66-b73ae1ea3cd0" name="Changes by leonore.sarfati" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +56,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -77,9 +85,22 @@
       <updated>1718538247977</updated>
       <workItem from="1718538249248" duration="2000" />
     </task>
+    <task id="LOCAL-00001" summary="✨ Initialize Object and Backpack classes">
+      <option name="closed" value="true" />
+      <created>1718732000491</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718732000491</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="✨ Initialize Object and Backpack classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="✨ Initialize Object and Backpack classes" />
   </component>
 </project>
