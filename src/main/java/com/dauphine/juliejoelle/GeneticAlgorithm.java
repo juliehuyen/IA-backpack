@@ -39,7 +39,7 @@ public class GeneticAlgorithm {
         ArrayList<Couple> couples = new ArrayList<>();
         RandomSelector selector = new RandomSelector();
         for(int i = 0; i < populationSize; i++){
-            selector.add(i);
+            selector.add(population.get(i).getFitness());
         }
         for(int i = 1; i <= populationSize/2; i++){
             int father = selector.randomChoice();
