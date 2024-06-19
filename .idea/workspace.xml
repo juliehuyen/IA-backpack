@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ffa8677e-60a9-4b69-b50f-c4510a0778af" name="Changes" comment="✨ Ajout main + générations/tours">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ffa8677e-60a9-4b69-b50f-c4510a0778af" name="Changes" comment="✨ Change randomSelector avec la fitness">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Item.java" afterDir="false" />
     </list>
     <list id="54e4ea6b-8a3c-4ef1-9677-d0b56288d7fd" name="Changes by 24208" comment="" />
     <list id="f1a1ffce-0665-480c-9cbd-2c69f503ffee" name="Changes by joell" comment="" />
@@ -82,7 +82,7 @@
       <updated>1718538247977</updated>
       <workItem from="1718538249248" duration="2000" />
       <workItem from="1718806875947" duration="8762000" />
-      <workItem from="1718818369131" duration="521000" />
+      <workItem from="1718818369131" duration="1180000" />
     </task>
     <task id="LOCAL-00001" summary="✨ Initialize Object and Backpack classes">
       <option name="closed" value="true" />
@@ -100,7 +100,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718818049211</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="✨ Change randomSelector avec la fitness">
+      <option name="closed" value="true" />
+      <created>1718819079732</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718819079732</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,6 +117,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="✨ Initialize Object and Backpack classes" />
     <MESSAGE value="✨ Ajout main + générations/tours" />
-    <option name="LAST_COMMIT_MESSAGE" value="✨ Ajout main + générations/tours" />
+    <MESSAGE value="✨ Change randomSelector avec la fitness" />
+    <option name="LAST_COMMIT_MESSAGE" value="✨ Change randomSelector avec la fitness" />
   </component>
 </project>

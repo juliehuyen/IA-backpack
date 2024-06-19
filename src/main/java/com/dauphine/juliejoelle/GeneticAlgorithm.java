@@ -102,7 +102,8 @@ public class GeneticAlgorithm {
                     if (Math.random() < mutationRate) {
                         newPopulation.set(i, mutation(newPopulation.get(i)));
                     }
-                    newPopulation.get(i).repair();
+//                    newPopulation.get(i).repair();
+                    newPopulation.get(i).repairByWeight();
                 }
                 for(int j = 1; j <= populationSize * elitistRate; j++){
                     this.replace(newPopulation);
