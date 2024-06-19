@@ -39,50 +39,52 @@ public class Backpack {
     }
 
     public void repair() {
-        List<Integer> indices = new LinkedList<>();
-        for (int i = 0; i < items.size(); i++) {
-            indices.add(i);
-        }
-        indices.sort(Comparator.comparingInt(i -> -items.get(i).getUtility()));
-
-        List<Integer> totalCosts = new LinkedList<>();
-        for (int j = 0; j < budgets.size(); j++) {
-            int sum = 0;
-            for (int i=0; i<items.size(); i++) {
-                if (solution.get(i)) {
-                    sum += items.get(i).getCosts().get(j);
-                }
+        if(!this.isSolutionValid()){
+            List<Integer> indices = new LinkedList<>();
+            for (int i = 0; i < items.size(); i++) {
+                indices.add(i);
             }
-            totalCosts.add(sum);
-        }
+            indices.sort(Comparator.comparingInt(i -> -items.get(i).getUtility()));
 
-        // First Loop : remove items exceeds budget
-        for (int l = indices.size() - 1; l > 0; l--) {
+            List<Integer> totalCosts = new LinkedList<>();
             for (int j = 0; j < budgets.size(); j++) {
-                if(solution.get(l) && totalCosts.get(j) > budgets.get(j)) {
-                    solution.set(l, false);
-                    for (int k = 0; k < budgets.size(); k++) {
-                        int newCost = totalCosts.get(k) - items.get(l).getCosts().get(k);
-                        totalCosts.set(k, newCost);
+                int sum = 0;
+                for (int i=0; i<items.size(); i++) {
+                    if (solution.get(i)) {
+                        sum += items.get(i).getCosts().get(j);
+                    }
+                }
+                totalCosts.add(sum);
+            }
+
+            // First Loop : remove items exceeds budget
+            for (int l = indices.size() - 1; l > 0; l--) {
+                for (int j = 0; j < budgets.size(); j++) {
+                    if(solution.get(l) && totalCosts.get(j) > budgets.get(j)) {
+                        solution.set(l, false);
+                        for (int k = 0; k < budgets.size(); k++) {
+                            int newCost = totalCosts.get(k) - items.get(l).getCosts().get(k);
+                            totalCosts.set(k, newCost);
+                        }
                     }
                 }
             }
-        }
 
-        // Second Loop : add items
-        for (int l = 0; l < indices.size(); l++) {
-            boolean canAdd = true;
-            for (int j = 0; j < budgets.size(); j++) {
-                if (!solution.get(l) && totalCosts.get(j) + items.get(l).getCosts().get(j) > budgets.get(j)) {
-                    canAdd = false;
-                    break;
+            // Second Loop : add items
+            for (int l = 0; l < indices.size(); l++) {
+                boolean canAdd = true;
+                for (int j = 0; j < budgets.size(); j++) {
+                    if (!solution.get(l) && totalCosts.get(j) + items.get(l).getCosts().get(j) > budgets.get(j)) {
+                        canAdd = false;
+                        break;
+                    }
                 }
-            }
-            if(canAdd){
-                solution.set(l, true);
-                for (int k = 0; k < budgets.size(); k++) {
-                    int newCost = totalCosts.get(k) + items.get(l).getCosts().get(k);
-                    totalCosts.set(k, newCost);
+                if(canAdd){
+                    solution.set(l, true);
+                    for (int k = 0; k < budgets.size(); k++) {
+                        int newCost = totalCosts.get(k) + items.get(l).getCosts().get(k);
+                        totalCosts.set(k, newCost);
+                    }
                 }
             }
         }

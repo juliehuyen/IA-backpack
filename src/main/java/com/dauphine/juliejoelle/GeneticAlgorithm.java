@@ -1,6 +1,7 @@
 package com.dauphine.juliejoelle;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -9,8 +10,10 @@ public class GeneticAlgorithm {
     private List<Item> items;
     private List<Backpack> population;
     private int populationSize;
+    private int nbGenerations;
 
-    public GeneticAlgorithm(Backpack backpack, List<Item> items, int k) {
+
+    public GeneticAlgorithm(Backpack backpack, List<Item> items, int k, int nbGenerations) {
         this.items = items;
         this.population = new ArrayList<>();
         for(int i = 0; i < 2 * k; i++) {
@@ -18,7 +21,9 @@ public class GeneticAlgorithm {
             copy.setSolution(this.generateRandomSolution(backpack.getObjects().size()));
             this.population.add(copy);
         }
+        this.backpack = backpack;
         this.populationSize = k*2;
+        this.nbGenerations = nbGenerations;
     }
 
     private List<Boolean> generateRandomSolution(int size) {
@@ -53,19 +58,25 @@ public class GeneticAlgorithm {
         RandomSelector r = new RandomSelector();
         r.add(1); r.add(1);
         for(Couple c: parents){
-            List<Boolean> newSolution = new ArrayList<>();
-            for(int i=0; i<items.size()-1;i++){
+            List<Boolean> newSolution1 = new ArrayList<>();
+            List<Boolean> newSolution2 = new ArrayList<>();
+            for(int i=0; i<items.size();i++){
                 int whichParent = r.randomChoice(); // Math.random()
                 if (whichParent==0){
-                    newSolution.add(c.getFather().getSolution().get(i));
+                    newSolution1.add(c.getFather().getSolution().get(i));
+                    newSolution2.add(c.getMother().getSolution().get(i));
                 }
                 else{
-                    newSolution.add(c.getMother().getSolution().get(i));
+                    newSolution1.add(c.getMother().getSolution().get(i));
+                    newSolution2.add(c.getFather().getSolution().get(i));
                 }
             }
-            Backpack b = new Backpack(backpack.getBudgets(), backpack.getObjects());
-            b.setSolution(newSolution);
-            newPop.add(b);
+            Backpack b1 = new Backpack(backpack.getBudgets(), backpack.getObjects());
+            b1.setSolution(newSolution1);
+            Backpack b2 = new Backpack(backpack.getBudgets(), backpack.getObjects());
+            b2.setSolution(newSolution2);
+            newPop.add(b1);
+            newPop.add(b2);
         }
         return newPop;
     }
@@ -79,27 +90,36 @@ public class GeneticAlgorithm {
         return backpack;
     }
 
-    private Backpack solve(double mutationRate, double elitistRate) {
-        boolean test = false;
-        int itnb = 0;
+    public List<Backpack> solve(double mutationRate, double elitistRate) {
         List<Backpack> newPopulation = new ArrayList<>(population);
-        while (!test) {
-            List<Couple> parents = selection();
-            newPopulation = crossover(parents);
-            for (int i = 0; i < newPopulation.size(); i++) {
-                if (Math.random() < mutationRate) {
-                    newPopulation.set(i, mutation(newPopulation.get(i)));
+        List<Backpack> solutions = new LinkedList<>();
+        for(int g = 0; g < this.nbGenerations; g++){
+            boolean test = false;
+            while (!test) {
+                List<Couple> parents = selection();
+                newPopulation = crossover(parents);
+                for (int i = 0; i < newPopulation.size(); i++) {
+                    if (Math.random() < mutationRate) {
+                        newPopulation.set(i, mutation(newPopulation.get(i)));
+                    }
                     newPopulation.get(i).repair();
                 }
+                for(int j = 1; j <= populationSize * elitistRate; j++){
+                    this.replace(newPopulation);
+                }
+                population = newPopulation;
+                for(Backpack b: population){
+                    System.out.println("Génération " + g +" : " + b.getSolution());
+                }
+                test = (getBest(population).isSolutionValid());
+                //TODO faire itnb fois rajouter une solution dans population puis récupérer le best de la population à la fin
+                //TODO faire solve plusieurs fois à la fin pour des statistiques
             }
-            for(int j = 1; j <= populationSize * elitistRate; j++){
-               this.replace(newPopulation);
-            }
-            population = newPopulation;
-            test = (backpack.isSolutionValid()) || (itnb > 1000);
-            itnb++;
+            solutions.add(getBest(newPopulation));
         }
-        return getBest(newPopulation);
+        System.out.println(solutions.size());
+        System.out.println(solutions);
+        return solutions;
     }
 
     private Backpack getBest(List<Backpack> population) {
