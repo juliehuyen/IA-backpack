@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffa8677e-60a9-4b69-b50f-c4510a0778af" name="Changes" comment="✨ Change randomSelector avec la fitness">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Main.java" afterDir="false" />
     </list>
     <list id="54e4ea6b-8a3c-4ef1-9677-d0b56288d7fd" name="Changes by 24208" comment="" />
     <list id="f1a1ffce-0665-480c-9cbd-2c69f503ffee" name="Changes by joell" comment="" />
+    <list id="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" name="Changes by Joëlle" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Main.java" afterDir="false" />
+    </list>
     <list id="ca74bef3-d82e-45d5-9e66-b73ae1ea3cd0" name="Changes by leonore.sarfati" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +46,58 @@
     &quot;accountId&quot;: &quot;6b5c6b68-9afc-4863-bb34-581852ffe3a5&quot;
   }
 }</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java">
+      <ranges>
+        <range start1="2" end1="6" start2="2" end2="3" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="13" end1="13" start2="10" end2="11" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="18" end1="19" start2="16" end2="17" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="30" end1="31" start2="28" end2="29" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="37" end1="38" start2="35" end2="36" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="39" end1="46" start2="37" end2="41" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="47" end1="48" start2="42" end2="43" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="54" end1="54" start2="49" end2="72" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="59" end1="60" start2="77" end2="78" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="62" end1="63" start2="80" end2="81" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="64" end1="65" start2="82" end2="83" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="68" end1="69" start2="86" end2="87" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="82" end1="82" start2="100" end2="127" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="91" end1="91" start2="136" end2="158" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="104" end1="106" start2="171" end2="172" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="111" end1="114" start2="177" end2="177" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="120" end1="122" start2="183" end2="183" changelist="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" />
+        <range start1="124" end1="124" start2="185" end2="299" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="152" end1="152" start2="327" end2="334" changelist="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" />
+        <range start1="153" end1="153" start2="335" end2="344" changelist="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java">
+      <ranges>
+        <range start1="41" end1="42" start2="41" end2="42" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="51" end1="52" start2="51" end2="52" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="103" end1="104" start2="103" end2="104" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="133" end1="134" start2="133" end2="134" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="167" end1="167" start2="167" end2="168" changelist="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Main.java">
+      <ranges>
+        <range start1="3" end1="4" start2="3" end2="3" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="7" end1="7" start2="6" end2="14" changelist="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" />
+        <range start1="9" end1="11" start2="16" end2="16" changelist="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" />
+        <range start1="12" end1="14" start2="17" end2="19" changelist="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" />
+        <range start1="16" end1="17" start2="21" end2="22" changelist="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" />
+        <range start1="21" end1="25" start2="26" end2="26" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="29" end1="30" start2="30" end2="31" changelist="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" />
+        <range start1="37" end1="45" start2="38" end2="39" changelist="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" />
+        <range start1="48" end1="50" start2="42" end2="44" changelist="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" />
+        <range start1="52" end1="67" start2="46" end2="87" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="68" end1="69" start2="88" end2="96" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="70" end1="70" start2="97" end2="98" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
+        <range start1="86" end1="86" start2="114" end2="122" changelist="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>

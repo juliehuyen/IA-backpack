@@ -1,7 +1,6 @@
 package com.dauphine.juliejoelle;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -19,10 +18,6 @@ public class Main {
             }
             items.add(new Item(utility, costs));
         }
-//        items.add(new Item(10, Arrays.asList(5, 3)));
-//        items.add(new Item(6, Arrays.asList(4, 2)));
-//        items.add(new Item(8, Arrays.asList(6, 1)));
-//        items.add(new Item(7, Arrays.asList(3, 5)));
         // Add more items as needed
 
         // Define budgets
@@ -50,24 +45,57 @@ public class Main {
             List<Backpack> solutions = ga.solve(mutationRate, elitistRate);
             backpacks.add(solutions);
         }
-        for(int i = 0; i < nbGenerations; i++) {
-            for(int j = 0; j < tour; j++) {
-                System.out.println("-------- Génération : " + i +" du tour : "+ j +" -------- ");
-                System.out.println("Best solution utility : "+backpacks.get(j).get(i).getFitness());
-                System.out.print("Best solution costs : ");
-                for(int c = 0; c < budgets.size(); c++) {
-                    int cost = 0;
-                    for(int s = 0; s < backpacks.get(j).get(i).getSolution().size(); s++) {
-                        if(backpacks.get(j).get(i).getSolution().get(s)){
-                            cost+=backpacks.get(j).get(i).getObjects().get(s).getCosts().get(c);
-                        }
-                    }
-                    System.out.print(cost + " ");
-                }
-                System.out.println();
-            }
 
+        List<List<Integer>> generationFitness = new ArrayList<>();
+        for (int i = 0; i < NB_GENERATIONS; i++) {
+            generationFitness.add(new ArrayList<>());
         }
+
+        // Solve the problem multiple times and collect fitness values
+        for (int i = 0; i < NB_ITERATIONS; i++) {
+            List<Backpack> solutions = ga.solve(MUTATION_RATE, ELITIST_RATE);
+            for (int gen = 0; gen < NB_GENERATIONS; gen++) {
+                int bestFitness = solutions.get(gen).getFitness();
+                generationFitness.get(gen).add(bestFitness);
+            }
+        }
+
+        // Calculate and print the mean and standard deviation for each generation
+        for (int gen = 0; gen < NB_GENERATIONS; gen++) {
+            double mean = ga.calculateMean(generationFitness.get(gen));
+            double stddev = ga.calculateStandardDeviation(generationFitness.get(gen));
+//            System.out.println("Generation " + (gen + 1) + " - Mean Fitness: " + mean + ", Standard Deviation: " + stddev);
+        }
+
+        for (int g = 0; g < NB_GENERATIONS; g++) {
+            int moyenne = 0;
+            double ecartType = 0;
+            for (int j = 0; j < NB_ITERATIONS; j++) {
+                Backpack b = backpacks.get(j).get(g);
+                moyenne += b.getFitness();
+//                System.out.println("-------- Génération : " + g +" du tour : "+ j +" -------- ");
+//                System.out.println("Best solution utility : "+b.getFitness());
+//                System.out.print("Best solution costs : ");
+//                for (int c = 0; c < budgets.size(); c++) {
+//                    int cost = 0;
+//                    for (int i = 0; i < b.getSolution().size(); i++) {
+//                        if (b.getSolution().get(i)) {
+//                            cost+=b.getObjects().get(i).getCosts().get(c);
+//                        }
+//                    }
+//                    System.out.print(cost + " ");
+//                }
+//                System.out.println();
+            }
+            moyenne =moyenne/NB_ITERATIONS;
+            for(int k = 0; k < NB_ITERATIONS; k++){
+                Backpack b = backpacks.get(k).get(g);
+                ecartType += Math.pow((b.getFitness()-moyenne),2);
+            }
+            ecartType =Math.sqrt(ecartType/NB_ITERATIONS);
+            System.out.println("Generation " + (g + 1) + " - Moyenne : " + moyenne + ", Ecart-type : " + ecartType);
+        }
+
 
 
         // Print the best solution

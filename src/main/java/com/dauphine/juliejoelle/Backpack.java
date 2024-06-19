@@ -39,7 +39,7 @@ public class Backpack {
     }
 
     public void repair() {
-        if(!this.isSolutionValid()){
+        if (!this.isSolutionValid()) {
             List<Integer> indices = new LinkedList<>();
             for (int i = 0; i < items.size(); i++) {
                 indices.add(i);
@@ -49,7 +49,7 @@ public class Backpack {
             List<Integer> totalCosts = new LinkedList<>();
             for (int j = 0; j < budgets.size(); j++) {
                 int sum = 0;
-                for (int i=0; i<items.size(); i++) {
+                for (int i = 0; i < items.size(); i++) {
                     if (solution.get(i)) {
                         sum += items.get(i).getCosts().get(j);
                     }
@@ -101,7 +101,7 @@ public class Backpack {
             List<Integer> totalCosts = new LinkedList<>();
             for (int j = 0; j < budgets.size(); j++) {
                 int sum = 0;
-                for (int i=0; i<items.size(); i++) {
+                for (int i = 0; i < items.size(); i++) {
                     if (solution.get(i)) {
                         sum += items.get(i).getCosts().get(j);
                     }
@@ -131,7 +131,7 @@ public class Backpack {
                         break;
                     }
                 }
-                if(canAdd){
+                if (canAdd) {
                     solution.set(l, true);
                     for (int k = 0; k < budgets.size(); k++) {
                         int newCost = totalCosts.get(k) + items.get(l).getCosts().get(k);

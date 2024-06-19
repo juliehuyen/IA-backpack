@@ -15,7 +15,7 @@ public class Item {
         for (int i = 0; i < costs.size(); i++) {
             sum += costs.get(i);
         }
-        this.weight = utility / sum;
+        this.weight = (double) utility / sum;
     }
 
     public int getUtility() {
