@@ -165,4 +165,5 @@ public class Backpack {
     public void setSolution(List<Boolean> solution) {
         this.solution = solution;
     }
+
 }

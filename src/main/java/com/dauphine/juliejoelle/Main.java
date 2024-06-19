@@ -4,16 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    final static int NB_ITEMS = 20;
+    final static int COSTS_SIZE = 5;
+    final static int POPULATION_SIZE = 100;
+    final static int NB_GENERATIONS = 20;
+    final static double MUTATION_RATE = 0.5;
+    final static double ELITIST_RATE = 0.1;
+    final static int NB_ITERATIONS = 3;
+
     public static void main(String[] args) {
         // Create items
-        int nbItems = 20;
-        int sizeCosts = 5;
         List<Item> items = new ArrayList<>();
-        List<Integer> costs = new ArrayList<>();
-        for(int i = 0; i < nbItems; i++) {
+        List<Integer> costs;
+        for (int i = 0; i < NB_ITEMS; i++) {
             costs = new ArrayList<>();
             int utility = (int) (Math.random() * 100);
-            for(int j = 0; j < sizeCosts; j++) {
+            for (int j = 0; j < COSTS_SIZE; j++) {
                 costs.add((int) (Math.random() * 15));
             }
             items.add(new Item(utility, costs));
@@ -22,7 +28,7 @@ public class Main {
 
         // Define budgets
         List<Integer> budgets = new ArrayList<>();
-        for(int i = 0; i < costs.size(); i++) {
+        for (int i = 0; i < COSTS_SIZE; i++) {
             budgets.add((int) (Math.random() * 100)+25);
         }
 
@@ -30,19 +36,12 @@ public class Main {
         Backpack backpack = new Backpack(budgets, items);
 
         // Initialize and execute the genetic algorithm
-        int populationSize = 100; // Example size
-        int nbGenerations = 20;
-        GeneticAlgorithm ga = new GeneticAlgorithm(backpack, items, populationSize,nbGenerations);
-
-        // Parameters for the genetic algorithm
-        double mutationRate = 0.05;
-        double elitistRate = 0.1;
-        int tour = 3;
+        GeneticAlgorithm ga = new GeneticAlgorithm(backpack, items, POPULATION_SIZE,NB_GENERATIONS);
 
         // Solve the problem
         List<List<Backpack>> backpacks = new ArrayList<>();
-        for(int i = 0; i < tour; i++) {
-            List<Backpack> solutions = ga.solve(mutationRate, elitistRate);
+        for (int i = 0; i < NB_ITERATIONS; i++) {
+            List<Backpack> solutions = ga.solve(MUTATION_RATE, ELITIST_RATE);
             backpacks.add(solutions);
         }
 
@@ -111,5 +110,13 @@ public class Main {
 //            System.out.print(totalCost + " ");
 //        }
 //        System.out.println();
+    }
+
+    private static int getMean() {
+        return 0;
+    }
+
+    private static int getStandardDeviation() {
+        return 0;
     }
 }

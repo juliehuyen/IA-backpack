@@ -181,8 +181,6 @@ public class GeneticAlgorithm {
             }
             solutions.add(getBest(newPopulation));
         }
-        System.out.println(solutions.size());
-        System.out.println(solutions);
         return solutions;
     }
 
@@ -327,5 +325,21 @@ public class GeneticAlgorithm {
         population.add(best);
     }
 
+    public double calculateMean(List<Integer> values) {
+        double sum = 0.0;
+        for (int value : values) {
+            sum += value;
+        }
+        return sum / values.size();
+    }
 
+    public double calculateStandardDeviation(List<Integer> values) {
+        double mean = calculateMean(values);
+        double sumSquaredDiffs = 0.0;
+        for (int value : values) {
+            sumSquaredDiffs += Math.pow(value - mean, 2);
+        }
+        double variance = sumSquaredDiffs / values.size();
+        return Math.sqrt(variance);
+    }
 }
