@@ -87,7 +87,7 @@ public class MainTest2 {
 
 
         SwingUtilities.invokeLater(() -> {
-            PerformanceChart chart = new PerformanceChart("Performance Chart", moyennesMap);
+            PerformanceChart chart = new PerformanceChart("Courbe de performance", moyennesMap, ecartTypesMap);
             chart.setSize(1920, 1080);
             chart.setLocationRelativeTo(null);
             chart.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
