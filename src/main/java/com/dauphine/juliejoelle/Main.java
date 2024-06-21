@@ -45,27 +45,8 @@ public class Main {
             backpacks.add(solutions);
         }
 
-        List<List<Integer>> generationFitness = new ArrayList<>();
-        for (int i = 0; i < NB_GENERATIONS; i++) {
-            generationFitness.add(new ArrayList<>());
-        }
-
-        // Solve the problem multiple times and collect fitness values
-        for (int i = 0; i < NB_ITERATIONS; i++) {
-            List<Backpack> solutions = ga.solve(MUTATION_RATE, ELITIST_RATE);
-            for (int gen = 0; gen < NB_GENERATIONS; gen++) {
-                int bestFitness = solutions.get(gen).getFitness();
-                generationFitness.get(gen).add(bestFitness);
-            }
-        }
-
-        // Calculate and print the mean and standard deviation for each generation
-        for (int gen = 0; gen < NB_GENERATIONS; gen++) {
-            double mean = ga.calculateMean(generationFitness.get(gen));
-            double stddev = ga.calculateStandardDeviation(generationFitness.get(gen));
-//            System.out.println("Generation " + (gen + 1) + " - Mean Fitness: " + mean + ", Standard Deviation: " + stddev);
-        }
-
+        List<Integer> moyennes = new ArrayList<>();
+        List<Double> ecartTypes = new ArrayList<>();
         for (int g = 0; g < NB_GENERATIONS; g++) {
             int moyenne = 0;
             double ecartType = 0;
@@ -87,36 +68,16 @@ public class Main {
 //                System.out.println();
             }
             moyenne =moyenne/NB_ITERATIONS;
+            moyennes.add(moyenne);
             for(int k = 0; k < NB_ITERATIONS; k++){
                 Backpack b = backpacks.get(k).get(g);
                 ecartType += Math.pow((b.getFitness()-moyenne),2);
             }
             ecartType =Math.sqrt(ecartType/NB_ITERATIONS);
+            ecartTypes.add(ecartType);
             System.out.println("Generation " + (g + 1) + " - Moyenne : " + moyenne + ", Ecart-type : " + ecartType);
         }
 
-
-
-        // Print the best solution
-//        System.out.println("Best solution utility: " + bestSolution.getFitness());
-//        System.out.println("Best solution costs: ");
-//        for (int j = 0; j < budgets.size(); j++) {
-//            int totalCost = 0;
-//            for (int i = 0; i < bestSolution.getSolution().size(); i++) {
-//                if (bestSolution.getSolution().get(i)) {
-//                    totalCost += bestSolution.getObjects().get(i).getCosts().get(j);
-//                }
-//            }
-//            System.out.print(totalCost + " ");
-//        }
-//        System.out.println();
     }
 
-    private static int getMean() {
-        return 0;
-    }
-
-    private static int getStandardDeviation() {
-        return 0;
-    }
 }
