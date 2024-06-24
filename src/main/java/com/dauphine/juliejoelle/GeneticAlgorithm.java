@@ -3,12 +3,14 @@ package com.dauphine.juliejoelle;
 import java.util.*;
 
 public class GeneticAlgorithm {
-    private Backpack backpack;
-    private List<Item> items;
+    private final Backpack backpack;
+    private final List<Item> items;
     private List<Backpack> population;
-    private int populationSize;
-    private int nbGenerations;
+    private final int populationSize;
+    private final int nbGenerations;
     final static int TOURNAMENT_SIZE = 30;
+
+
 
 
     public GeneticAlgorithm(Backpack backpack, List<Item> items, int k, int nbGenerations) {
@@ -16,7 +18,9 @@ public class GeneticAlgorithm {
         this.population = new ArrayList<>();
         for (int i = 0; i < 2 * k; i++) {
             Backpack copy = new Backpack(backpack.getBudgets(), backpack.getObjects());
-            copy.setSolution(this.generateRandomSolution(backpack.getObjects().size()));
+            do {
+                copy.setSolution(this.generateRandomSolution(backpack.getObjects().size()));
+            } while(!copy.isSolutionValid());
             this.population.add(copy);
         }
         this.backpack = backpack;
@@ -25,17 +29,20 @@ public class GeneticAlgorithm {
     }
 
     private List<Boolean> generateRandomSolution(int size) {
-        List<Boolean> solution = new ArrayList<Boolean>();
+        List<Boolean> solution = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             solution.add(Math.random() < 0.5);
         }
         return solution;
     }
 
-    // Variant possible
     private ArrayList<Couple> selection() {
         ArrayList<Couple> couples = new ArrayList<>();
         Random random = new Random();
+//        RandomSelector r = new RandomSelector();
+//        for(int i = 0; i < populationSize; i++){
+//            r.add(population.get(i).getFitness());
+//        }
         for (int i = 1; i <= populationSize/2; i++) {
             int father = random.nextInt(populationSize);
             int mother = random.nextInt(populationSize);
@@ -61,7 +68,7 @@ public class GeneticAlgorithm {
         return couples;
     }
 
-    private Backpack tournament(int tournamentSize) {
+    private Backpack tournament(int tournamentSize){
         List<Backpack> tournament = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < tournamentSize; i++) {
@@ -126,6 +133,44 @@ public class GeneticAlgorithm {
         return newPop;
     }
 
+    private List<Backpack> multiPointCrossover(List<Couple> parents, int numPoints) {
+        List<Backpack> newPop = new ArrayList<>();
+        Random random = new Random();
+        int size = items.size();
+
+        for (Couple c : parents) {
+            List<Boolean> newSolution1 = new ArrayList<>();
+            List<Boolean> newSolution2 = new ArrayList<>();
+            Set<Integer> crossoverPoints = new TreeSet<>();
+
+            while (crossoverPoints.size() < numPoints) {
+                crossoverPoints.add(random.nextInt(size));
+            }
+
+            boolean parentSwitch = false;
+            for (int i = 0; i < size; i++) {
+                if (crossoverPoints.contains(i)) {
+                    parentSwitch = !parentSwitch;
+                }
+                if (parentSwitch) {
+                    newSolution1.add(c.getMother().getSolution().get(i));
+                    newSolution2.add(c.getFather().getSolution().get(i));
+                } else {
+                    newSolution1.add(c.getFather().getSolution().get(i));
+                    newSolution2.add(c.getMother().getSolution().get(i));
+                }
+            }
+
+            Backpack b1 = new Backpack(backpack.getBudgets(), backpack.getObjects());
+            b1.setSolution(newSolution1);
+            Backpack b2 = new Backpack(backpack.getBudgets(), backpack.getObjects());
+            b2.setSolution(newSolution2);
+            newPop.add(b1);
+            newPop.add(b2);
+        }
+        return newPop;
+    }
+
     private Backpack mutation(Backpack backpack) {
         List<Boolean> newSolution = new ArrayList<>(backpack.getSolution());
         Random random = new Random();
@@ -139,222 +184,90 @@ public class GeneticAlgorithm {
         List<Boolean> newSolution = new ArrayList<>(backpack.getSolution());
         Random random = new Random();
         int mutationPoint1 = random.nextInt(newSolution.size());
+        int mutationPoint2 = mutationPoint1;
         if (newSolution.get(mutationPoint1)) {
             newSolution.set(mutationPoint1, false);
+            while (mutationPoint2 == mutationPoint1 && !newSolution.get(mutationPoint2)) {
+                mutationPoint2 = random.nextInt(newSolution.size());
+            }
+            newSolution.set(mutationPoint2, true);
         } else {
             newSolution.set(mutationPoint1, true);
-        }
-        int mutationPoint2 = mutationPoint1;
-        while (mutationPoint2 == mutationPoint1) {
-            mutationPoint2 = random.nextInt(newSolution.size());
-        }
-        if (newSolution.get(mutationPoint2)) {
+            while (mutationPoint2 == mutationPoint1 && newSolution.get(mutationPoint2)) {
+                mutationPoint2 = random.nextInt(newSolution.size());
+            }
             newSolution.set(mutationPoint2, false);
-        } else {
-            newSolution.set(mutationPoint2, true);
         }
         backpack.setSolution(newSolution);
         return backpack;
     }
 
-    public List<Backpack> solve(double mutationRate, double elitistRate) {
-        List<Backpack> newPopulation = new ArrayList<>(population);
-        List<Backpack> solutions = new LinkedList<>();
-        for(int g = 0; g < this.nbGenerations; g++){
-            List<Couple> parents = selection();
-            newPopulation = crossover(parents);
-            for (int i = 0; i < newPopulation.size(); i++) {
-                if (Math.random() < mutationRate) {
-                    newPopulation.set(i, mutation(newPopulation.get(i)));
-                }
-                newPopulation.get(i).repair();
-            }
-            for(int j = 1; j <= populationSize * elitistRate; j++){
-                this.replace(newPopulation);
-            }
-            population = newPopulation;
-
-            solutions.add(getBest(newPopulation));
-        }
-        return solutions;
-    }
-
-    public List<Backpack> solveVariantSelectionByTournament(double mutationRate, double elitistRate) {
-        List<Backpack> newPopulation = new ArrayList<>(population);
-        List<Backpack> solutions = new LinkedList<>();
-        for(int g = 0; g < this.nbGenerations; g++){
-            boolean test = false;
-            while (!test) {
-                List<Couple> parents = selectionByTournament(TOURNAMENT_SIZE);
-                newPopulation = crossover(parents);
-                for (int i = 0; i < newPopulation.size(); i++) {
-                    if (Math.random() < mutationRate) {
-                        newPopulation.set(i, mutation(newPopulation.get(i)));
-                    }
-                    newPopulation.get(i).repair();
-                }
-                for(int j = 1; j <= populationSize * elitistRate; j++){
-                    this.replace(newPopulation);
-                }
-                population = newPopulation;
-                test = (getBest(population).isSolutionValid());
-            }
-            solutions.add(getBest(newPopulation));
-        }
-        return solutions;
-    }
-
-    public List<Backpack> solveVariantOnePointCrossover(double mutationRate, double elitistRate) {
-        List<Backpack> newPopulation = new ArrayList<>(population);
-        List<Backpack> solutions = new LinkedList<>();
-        for(int g = 0; g < this.nbGenerations; g++){
-            boolean test = false;
-            while (!test) {
-                List<Couple> parents = selection();
-                newPopulation = onePointCrossover(parents);
-                for (int i = 0; i < newPopulation.size(); i++) {
-                    if (Math.random() < mutationRate) {
-                        newPopulation.set(i, mutation(newPopulation.get(i)));
-                    }
-                    newPopulation.get(i).repair();
-                }
-                for(int j = 1; j <= populationSize * elitistRate; j++){
-                    this.replace(newPopulation);
-                }
-                population = newPopulation;
-                test = (getBest(population).isSolutionValid());
-            }
-            solutions.add(getBest(newPopulation));
-        }
-        return solutions;
-    }
-
-    public List<Backpack> solveVariantMutationSwap(double mutationRate, double elitistRate) {
-        List<Backpack> newPopulation = new ArrayList<>(population);
-        List<Backpack> solutions = new LinkedList<>();
-        for(int g = 0; g < this.nbGenerations; g++){
-            boolean test = false;
-            while (!test) {
-                List<Couple> parents = selection();
-                newPopulation = crossover(parents);
-                for (int i = 0; i < newPopulation.size(); i++) {
-                    if (Math.random() < mutationRate) {
-                        newPopulation.set(i, mutationSwap(newPopulation.get(i)));
-                    }
-                    newPopulation.get(i).repair();
-                }
-                for(int j = 1; j <= populationSize * elitistRate; j++){
-                    this.replace(newPopulation);
-                }
-                population = newPopulation;
-                test = (getBest(population).isSolutionValid());
-            }
-            solutions.add(getBest(newPopulation));
-        }
-        return solutions;
-    }
-
-    public List<Backpack> solveVariantRepairByWeight(double mutationRate, double elitistRate) {
-        List<Backpack> newPopulation = new ArrayList<>(population);
-        List<Backpack> solutions = new LinkedList<>();
-        for(int g = 0; g < this.nbGenerations; g++){
-            boolean test = false;
-            while (!test) {
-                List<Couple> parents = selection();
-                newPopulation = crossover(parents);
-                for (int i = 0; i < newPopulation.size(); i++) {
-                    newPopulation.get(i).repairByWeight();
-                }
-                for (int i = 0; i < newPopulation.size(); i++) {
-                    if (Math.random() < mutationRate) {
-                        newPopulation.set(i, mutation(newPopulation.get(i)));
-                    }
-                    newPopulation.get(i).repairByWeight();
-                }
-                for(int j = 1; j <= populationSize * elitistRate; j++){
-                    this.replace(newPopulation);
-                }
-                population = newPopulation;
-                test = (getBest(population).isSolutionValid());
-            }
-            solutions.add(getBest(newPopulation));
-        }
-        return solutions;
-    }
+//    public List<Backpack> solve(double mutationRate, double elitistRate) {
+//        List<Backpack> newPopulation = new ArrayList<>(population);
+//        List<Backpack> solutions = new LinkedList<>();
+//        for(int g = 0; g < this.nbGenerations; g++){
+//            List<Couple> parents = selection();
+//            newPopulation = crossover(parents);
+//            for (int i = 0; i < newPopulation.size(); i++) {
+//                if (Math.random() < mutationRate) {
+//                    newPopulation.set(i, mutation(newPopulation.get(i)));
+//                }
+//                newPopulation.get(i).repair();
+//            }
+//            for(int j = 1; j <= populationSize * elitistRate; j++){
+//                this.replace(newPopulation);
+//            }
+//
+//            int numberOfElitist = (int) (populationSize * elitistRate);
+//            List<Backpack> worstBackapcks = newPopulation.stream().sorted(Comparator.comparing(Backpack::getFitness)).limit(numberOfElitist).toList();
+//            List<Backpack> bestBackapcks = population.stream().sorted(Comparator.comparing(Backpack::getFitness, Collections.reverseOrder())).limit(numberOfElitist).toList();
+//
+//            for (int i = 0; i < worstBackapcks.size(); i++) {
+//                newPopulation.remove(worstBackapcks.get(i));
+//                newPopulation.add(bestBackapcks.get(i));
+//            }
+//            population = newPopulation;
+//
+//            solutions.add(getBest(newPopulation));
+//        }
+//        return solutions;
+//    }
 
     private Backpack getBest(List<Backpack> population) {
-        Backpack best = population.getFirst();
-        for (Backpack b : population) {
-            if (b != best && b.getFitness() > best.getFitness()) {
-                best = b;
-            }
-        }
-        return best;
+        return population.stream().max(Comparator.comparingInt(Backpack::getFitness)).orElse(null);
     }
 
     private Backpack getWorst(List<Backpack> population) {
-        Backpack worst = population.getFirst();
-        for (Backpack b : population) {
-            if (b != worst && b.getFitness() < worst.getFitness()){
-                worst = b;
-            }
+        return population.stream().min(Comparator.comparingInt(Backpack::getFitness)).orElse(null);
+    }
+
+    private void replace(List<Backpack> newPopulation) {
+        Backpack worst = getWorst(newPopulation);
+        Backpack best = getBest(this.population);
+        if (worst != null && best != null && !newPopulation.contains(best)) {
+            newPopulation.remove(worst);
+            newPopulation.add(best);
+            System.out.println("Replacing worst solution with best solution "+ worst.getFitness() + " with " + best.getFitness());
         }
-        return worst;
     }
-
-    private void replace(List<Backpack> population) {
-        Backpack worst = getWorst(population);
-        Backpack best = getBest(population);
-        population.remove(worst);
-        population.add(best);
-    }
-
-    public double calculateMean(List<Integer> values) {
-        double sum = 0.0;
-        for (int value : values) {
-            sum += value;
-        }
-        return sum / values.size();
-    }
-
-    public double calculateStandardDeviation(List<Integer> values) {
-        double mean = calculateMean(values);
-        double sumSquaredDiffs = 0.0;
-        for (int value : values) {
-            sumSquaredDiffs += Math.pow(value - mean, 2);
-        }
-        double variance = sumSquaredDiffs / values.size();
-        return Math.sqrt(variance);
-    }
-
 
     public List<Backpack> solveVariant(String s, String m, String c, String r, double mutationRate, double elitistRate) {
-        List<Backpack> newPopulation = new ArrayList<>(population);
+//        System.out.println(getBest(population).getFitness());
+        List<Backpack> newPopulation;
         List<Backpack> solutions = new LinkedList<>();
         for(int g = 0; g < this.nbGenerations; g++){
-            List<Couple> parents;
-            switch (s) {
-                case "selection":
-                    parents = selection();
-                    break;
-                case "tournament":
-                    parents = selectionByTournament(TOURNAMENT_SIZE);
-                    break;
-                default:
-                    parents = selection();
-                    break;
-            }
-            switch (c) {
-                case "crossover":
-                    newPopulation = crossover(parents);
-                    break;
-                case "onepoint":
-                    newPopulation = onePointCrossover(parents);
-                    break;
-                default:
-                    newPopulation = crossover(parents);
-                    break;
-            }
+            List<Couple> parents = switch (s) {
+                case "selection" -> selection();
+                case "tournament" -> selectionByTournament(TOURNAMENT_SIZE);
+                default -> selection();
+            };
+            newPopulation = switch (c) {
+                case "crossover" -> crossover(parents);
+                case "onepoint" -> onePointCrossover(parents);
+                case "multipoints" -> multiPointCrossover(parents, 2);
+                default -> crossover(parents);
+            };
+
             for (int i = 0; i < newPopulation.size(); i++) {
                 if (Math.random() < mutationRate) {
                     switch (m) {
@@ -385,7 +298,8 @@ public class GeneticAlgorithm {
                 this.replace(newPopulation);
             }
             population = newPopulation;
-
+//            System.out.println(population);
+            System.out.println(getBest(population).getFitness());
             solutions.add(getBest(newPopulation));
         }
         return solutions;

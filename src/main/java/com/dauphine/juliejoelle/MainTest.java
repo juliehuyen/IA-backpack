@@ -40,28 +40,28 @@ public class MainTest {
         GeneticAlgorithm ga = new GeneticAlgorithm(backpack, items, POPULATION_SIZE, NB_GENERATIONS);
 
         // Solve the problem
-        List<List<Backpack>> backpacks = new ArrayList<>();
-        for (int i = 0; i < NB_ITERATIONS; i++) {
-            List<Backpack> solutions = ga.solve(MUTATION_RATE, ELITIST_RATE);
-            backpacks.add(solutions);
-        }
+//        List<List<Backpack>> backpacks = new ArrayList<>();
+//        for (int i = 0; i < NB_ITERATIONS; i++) {
+//            List<Backpack> solutions = ga.solve(MUTATION_RATE, ELITIST_RATE);
+//            backpacks.add(solutions);
+//        }
 
 
-        for (int g = 0; g < NB_GENERATIONS; g++) {
-            int moyenne = 0;
-            double ecartType = 0;
-            for (int j = 0; j < NB_ITERATIONS; j++) {
-                Backpack b = backpacks.get(j).get(g);
-                moyenne += b.getFitness();
-            }
-            moyenne = moyenne / NB_ITERATIONS;
-            for (int k = 0; k < NB_ITERATIONS; k++) {
-                Backpack b = backpacks.get(k).get(g);
-                ecartType += Math.pow((b.getFitness() - moyenne), 2);
-            }
-            ecartType = Math.sqrt(ecartType / NB_ITERATIONS);
-            System.out.println("Generation " + (g + 1) + " - Moyenne : " + moyenne + ", Ecart-type : " + ecartType);
-        }
+//        for (int g = 0; g < NB_GENERATIONS; g++) {
+//            int moyenne = 0;
+//            double ecartType = 0;
+//            for (int j = 0; j < NB_ITERATIONS; j++) {
+//                Backpack b = backpacks.get(j).get(g);
+//                moyenne += b.getFitness();
+//            }
+//            moyenne = moyenne / NB_ITERATIONS;
+//            for (int k = 0; k < NB_ITERATIONS; k++) {
+//                Backpack b = backpacks.get(k).get(g);
+//                ecartType += Math.pow((b.getFitness() - moyenne), 2);
+//            }
+//            ecartType = Math.sqrt(ecartType / NB_ITERATIONS);
+//            System.out.println("Generation " + (g + 1) + " - Moyenne : " + moyenne + ", Ecart-type : " + ecartType);
+//        }
     }
 
     private static List<Integer> getCostsForItem(List<List<Integer>> costsList, int itemIndex) {
