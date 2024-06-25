@@ -4,19 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ffa8677e-60a9-4b69-b50f-c4510a0778af" name="Changes" comment="⚡️ Meilleur affichage moyennes">
+    <list default="true" id="ffa8677e-60a9-4b69-b50f-c4510a0778af" name="Changes" comment="⚡️ Préparation des mains">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main1/Main1A.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main1/Main1B.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main1/Main1C.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main2/Main2A.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main2/Main2C.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main3/Main3A.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main3/Main3B.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main3/Main3C.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/MainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/MainTest2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/MainTest2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/PerformanceChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/PerformanceChart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/algorithm/Backpack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Couple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/algorithm/Couple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/algorithm/GeneticAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/algorithm/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/MainTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/MainTest2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main2/Main2B.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/PerformanceChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/display/PerformanceChart.java" afterDir="false" />
     </list>
-    <list id="54e4ea6b-8a3c-4ef1-9677-d0b56288d7fd" name="Changes by 24208" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java" afterDir="false" />
-    </list>
+    <list id="54e4ea6b-8a3c-4ef1-9677-d0b56288d7fd" name="Changes by 24208" comment="" />
     <list id="f1a1ffce-0665-480c-9cbd-2c69f503ffee" name="Changes by joell" comment="" />
     <list id="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" name="Changes by Joëlle" comment="" />
     <list id="ca74bef3-d82e-45d5-9e66-b73ae1ea3cd0" name="Changes by leonore.sarfati" comment="" />
@@ -52,36 +59,6 @@
     &quot;accountId&quot;: &quot;6b5c6b68-9afc-4863-bb34-581852ffe3a5&quot;
   }
 }</component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java">
-      <ranges>
-        <range start1="5" end1="7" start2="5" end2="7" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="8" end1="10" start2="8" end2="10" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="11" end1="11" start2="11" end2="13" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="18" end1="19" start2="20" end2="23" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="22" end1="23" start2="26" end2="27" changelist="54e4ea6b-8a3c-4ef1-9677-d0b56288d7fd" />
-        <range start1="27" end1="28" start2="31" end2="32" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="34" end1="35" start2="38" end2="38" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="38" end1="38" start2="41" end2="45" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="63" end1="64" start2="70" end2="71" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="127" end1="127" start2="134" end2="172" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="141" end1="141" start2="186" end2="187" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="143" end1="143" start2="189" end2="193" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="145" end1="151" start2="195" end2="198" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="152" end1="154" start2="199" end2="199" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="159" end1="283" start2="204" end2="234" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="285" end1="292" start2="236" end2="237" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="295" end1="302" start2="240" end2="241" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="304" end1="315" start2="243" end2="250" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="316" end1="317" start2="251" end2="251" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="318" end1="329" start2="252" end2="252" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="331" end1="332" start2="254" end2="256" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="334" end1="357" start2="258" end2="270" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-        <range start1="383" end1="386" start2="296" end2="304" changelist="54e4ea6b-8a3c-4ef1-9677-d0b56288d7fd" />
-        <range start1="387" end1="388" start2="305" end2="307" changelist="ffa8677e-60a9-4b69-b50f-c4510a0778af" />
-      </ranges>
-    </file>
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -94,6 +71,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "Application.Main1A.executor": "Run",
+    "Application.Main1B.executor": "Run",
+    "Application.Main1C.executor": "Run",
+    "Application.Main2A.executor": "Run",
+    "Application.Main2B.executor": "Run",
+    "Application.Main2C.executor": "Run",
+    "Application.Main3A.executor": "Run",
+    "Application.Main3B.executor": "Run",
+    "Application.Main3C.executor": "Run",
     "Application.MainTest.executor": "Run",
     "Application.MainTest2.executor": "Run",
     "Application.PerformanceChart.executor": "Run",
@@ -120,13 +106,19 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.dauphine.juliejoelle.main3" />
+      <recent name="com.dauphine.juliejoelle" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="MainTest2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.dauphine.juliejoelle.MainTest2" />
       <module name="IA-backpack" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.dauphine.juliejoelle.*" />
+          <option name="PATTERN" value="com.dauphine.juliejoelle.main1.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -135,11 +127,11 @@
       </method>
     </configuration>
     <configuration name="PerformanceChart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.dauphine.juliejoelle.PerformanceChart" />
+      <option name="MAIN_CLASS_NAME" value="com.dauphine.juliejoelle.display.PerformanceChart" />
       <module name="IA-backpack" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.dauphine.juliejoelle.*" />
+          <option name="PATTERN" value="com.dauphine.juliejoelle.main1.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -173,7 +165,8 @@
       <workItem from="1718538249248" duration="2000" />
       <workItem from="1718806875947" duration="8762000" />
       <workItem from="1718818369131" duration="1180000" />
-      <workItem from="1719238777696" duration="23910000" />
+      <workItem from="1719238777696" duration="24215000" />
+      <workItem from="1719295551718" duration="18103000" />
     </task>
     <task id="LOCAL-00001" summary="✨ Initialize Object and Backpack classes">
       <option name="closed" value="true" />
@@ -215,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718987733141</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="⚡️ Meilleur affichage moyennes + ecarts-types + nv jeu de données">
+      <option name="closed" value="true" />
+      <created>1719263481127</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1719263481127</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,7 +228,9 @@
     <MESSAGE value="✨ Change randomSelector avec la fitness" />
     <MESSAGE value="⚡️ Moyennes et écart-types" />
     <MESSAGE value="⚡️ Meilleur affichage moyennes" />
-    <option name="LAST_COMMIT_MESSAGE" value="⚡️ Meilleur affichage moyennes" />
+    <MESSAGE value="⚡️ Meilleur affichage moyennes + ecarts-types + nv jeu de données" />
+    <MESSAGE value="⚡️ Préparation des mains" />
+    <option name="LAST_COMMIT_MESSAGE" value="⚡️ Préparation des mains" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,6 +1,9 @@
-package com.dauphine.juliejoelle;
+package com.dauphine.juliejoelle.algorithm;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Backpack {
     private List<Integer> budgets;
@@ -166,4 +169,15 @@ public class Backpack {
         this.solution = solution;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < solution.size(); i++) {
+            if (solution.get(i))
+                res.append("1");
+            else
+                res.append("0");
+        }
+        return res.toString();
+    }
 }

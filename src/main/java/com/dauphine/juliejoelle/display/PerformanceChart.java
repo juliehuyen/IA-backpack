@@ -1,4 +1,4 @@
-package com.dauphine.juliejoelle;
+package com.dauphine.juliejoelle.display;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -71,7 +71,6 @@ public class PerformanceChart extends JFrame {
 
         // Customize the range axis (Y-axis)
         NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
-        rangeAxis.setRange(2900.0, 4200.0); // Adjust the range based on your data
         rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 
         // Add chart to a panel

@@ -1,4 +1,6 @@
-package com.dauphine.juliejoelle;
+package com.dauphine.juliejoelle.algorithm;
+
+import com.dauphine.juliejoelle.RandomSelector;
 
 import java.util.*;
 
@@ -8,7 +10,7 @@ public class GeneticAlgorithm {
     private List<Backpack> population;
     private final int populationSize;
     private final int nbGenerations;
-    final static int TOURNAMENT_SIZE = 30;
+    final static int TOURNAMENT_SIZE = 15;
 
 
 
@@ -16,15 +18,18 @@ public class GeneticAlgorithm {
     public GeneticAlgorithm(Backpack backpack, List<Item> items, int k, int nbGenerations) {
         this.items = items;
         this.population = new ArrayList<>();
+        System.out.println("Creating initial population...");
         for (int i = 0; i < 2 * k; i++) {
             Backpack copy = new Backpack(backpack.getBudgets(), backpack.getObjects());
             do {
+                System.out.println("Generating random solution... " + i );
                 copy.setSolution(this.generateRandomSolution(backpack.getObjects().size()));
             } while(!copy.isSolutionValid());
+            System.out.println("Adding backpack to population");
             this.population.add(copy);
         }
         this.backpack = backpack;
-        this.populationSize = k*2;
+        this.populationSize = k * 2;
         this.nbGenerations = nbGenerations;
     }
 
@@ -39,10 +44,6 @@ public class GeneticAlgorithm {
     private ArrayList<Couple> selection() {
         ArrayList<Couple> couples = new ArrayList<>();
         Random random = new Random();
-//        RandomSelector r = new RandomSelector();
-//        for(int i = 0; i < populationSize; i++){
-//            r.add(population.get(i).getFitness());
-//        }
         for (int i = 1; i <= populationSize/2; i++) {
             int father = random.nextInt(populationSize);
             int mother = random.nextInt(populationSize);
@@ -202,37 +203,6 @@ public class GeneticAlgorithm {
         return backpack;
     }
 
-//    public List<Backpack> solve(double mutationRate, double elitistRate) {
-//        List<Backpack> newPopulation = new ArrayList<>(population);
-//        List<Backpack> solutions = new LinkedList<>();
-//        for(int g = 0; g < this.nbGenerations; g++){
-//            List<Couple> parents = selection();
-//            newPopulation = crossover(parents);
-//            for (int i = 0; i < newPopulation.size(); i++) {
-//                if (Math.random() < mutationRate) {
-//                    newPopulation.set(i, mutation(newPopulation.get(i)));
-//                }
-//                newPopulation.get(i).repair();
-//            }
-//            for(int j = 1; j <= populationSize * elitistRate; j++){
-//                this.replace(newPopulation);
-//            }
-//
-//            int numberOfElitist = (int) (populationSize * elitistRate);
-//            List<Backpack> worstBackapcks = newPopulation.stream().sorted(Comparator.comparing(Backpack::getFitness)).limit(numberOfElitist).toList();
-//            List<Backpack> bestBackapcks = population.stream().sorted(Comparator.comparing(Backpack::getFitness, Collections.reverseOrder())).limit(numberOfElitist).toList();
-//
-//            for (int i = 0; i < worstBackapcks.size(); i++) {
-//                newPopulation.remove(worstBackapcks.get(i));
-//                newPopulation.add(bestBackapcks.get(i));
-//            }
-//            population = newPopulation;
-//
-//            solutions.add(getBest(newPopulation));
-//        }
-//        return solutions;
-//    }
-
     private Backpack getBest(List<Backpack> population) {
         return population.stream().max(Comparator.comparingInt(Backpack::getFitness)).orElse(null);
     }
@@ -247,12 +217,10 @@ public class GeneticAlgorithm {
         if (worst != null && best != null && !newPopulation.contains(best)) {
             newPopulation.remove(worst);
             newPopulation.add(best);
-            System.out.println("Replacing worst solution with best solution "+ worst.getFitness() + " with " + best.getFitness());
         }
     }
 
     public List<Backpack> solveVariant(String s, String m, String c, String r, double mutationRate, double elitistRate) {
-//        System.out.println(getBest(population).getFitness());
         List<Backpack> newPopulation;
         List<Backpack> solutions = new LinkedList<>();
         for(int g = 0; g < this.nbGenerations; g++){
@@ -297,9 +265,8 @@ public class GeneticAlgorithm {
             for(int j = 1; j <= populationSize * elitistRate; j++){
                 this.replace(newPopulation);
             }
+
             population = newPopulation;
-//            System.out.println(population);
-            System.out.println(getBest(population).getFitness());
             solutions.add(getBest(newPopulation));
         }
         return solutions;

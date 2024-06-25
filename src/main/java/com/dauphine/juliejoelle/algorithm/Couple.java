@@ -1,4 +1,4 @@
-package com.dauphine.juliejoelle;
+package com.dauphine.juliejoelle.algorithm;
 
 public class Couple {
     private Backpack mother;
