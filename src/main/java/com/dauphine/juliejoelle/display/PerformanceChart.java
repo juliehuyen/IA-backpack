@@ -125,30 +125,4 @@ public class PerformanceChart extends JFrame {
 
         return dataset;
     }
-
-    public static void main(String[] args) {
-        // Example usage:
-        // You would replace this with your actual fitness data for different variants
-        Map<String, List<Double>> fitnessMeans = Map.of(
-                "Variant 1", List.of(3600.0, 3700.0, 3800.0, 3900.0, 3950.0),
-                "Variant 2", List.of(3650.0, 3750.0, 3850.0, 3900.0, 3950.0),
-                "Variant 3", List.of(3550.0, 3650.0, 3750.0, 3850.0, 3950.0),
-                "Variant 4", List.of(3500.0, 3600.0, 3700.0, 3800.0, 3900.0)
-        );
-
-        Map<String, List<Double>> fitnessStdDevs = Map.of(
-                "Variant 1", List.of(50.0, 40.0, 30.0, 20.0, 10.0),
-                "Variant 2", List.of(45.0, 35.0, 25.0, 15.0, 5.0),
-                "Variant 3", List.of(55.0, 45.0, 35.0, 25.0, 15.0),
-                "Variant 4", List.of(60.0, 50.0, 40.0, 30.0, 20.0)
-        );
-
-        SwingUtilities.invokeLater(() -> {
-            PerformanceChart example = new PerformanceChart("Performance Chart Example", fitnessMeans, fitnessStdDevs);
-            example.setSize(1024, 768);
-            example.setLocationRelativeTo(null);
-            example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            example.setVisible(true);
-        });
-    }
 }

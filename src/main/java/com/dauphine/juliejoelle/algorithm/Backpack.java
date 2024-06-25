@@ -16,6 +16,10 @@ public class Backpack {
         this.solution = new ArrayList<>();
     }
 
+    /**
+     * Get the fitness of the solution
+     * @return the fitness of the solution
+     */
     public int getFitness() {
         int sum = 0;
         for (int i = 0; i < items.size(); i++) {
@@ -26,6 +30,10 @@ public class Backpack {
         return sum;
     }
 
+    /**
+     * Check if the solution is valid
+     * @return true if the solution is valid, false otherwise
+     */
     public boolean isSolutionValid() {
         for(int i = 0; i < budgets.size(); i++) {
             int sum = 0;
@@ -41,6 +49,9 @@ public class Backpack {
         return true;
     }
 
+    /**
+     * Repair the solution if it is not valid
+     */
     public void repair() {
         if (!this.isSolutionValid()) {
             List<Integer> indices = new LinkedList<>();
@@ -93,6 +104,9 @@ public class Backpack {
         }
     }
 
+    /**
+     * Repair the solution if it is not valid by weight
+     */
     public void repairByWeight() {
         if(!this.isSolutionValid()){
             List<Integer> indices = new LinkedList<>();

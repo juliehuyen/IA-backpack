@@ -12,9 +12,6 @@ public class GeneticAlgorithm {
     private final int nbGenerations;
     final static int TOURNAMENT_SIZE = 15;
 
-
-
-
     public GeneticAlgorithm(Backpack backpack, List<Item> items, int k, int nbGenerations) {
         this.items = items;
         this.population = new ArrayList<>();
@@ -33,6 +30,11 @@ public class GeneticAlgorithm {
         this.nbGenerations = nbGenerations;
     }
 
+    /**
+     * Generates a random solution for the backpack problem
+     * @param size the size of the solution
+     * @return a list of booleans representing the solution
+     */
     private List<Boolean> generateRandomSolution(int size) {
         List<Boolean> solution = new ArrayList<>();
         for (int i = 0; i < size; i++) {
@@ -41,6 +43,10 @@ public class GeneticAlgorithm {
         return solution;
     }
 
+    /**
+     * Selects the parents for the crossover operation
+     * @return a list of couples of backpacks
+     */
     private ArrayList<Couple> selection() {
         ArrayList<Couple> couples = new ArrayList<>();
         Random random = new Random();
@@ -56,6 +62,11 @@ public class GeneticAlgorithm {
         return couples;
     }
 
+    /**
+     * Selects the parents for the crossover operation using a tournament
+     * @param tournamentSize the size of the tournament
+     * @return a list of couples of backpacks
+     */
     private ArrayList<Couple> selectionByTournament(int tournamentSize) {
         ArrayList<Couple> couples = new ArrayList<>();
         for (int i = 0; i < populationSize / 2; i++) {
@@ -69,6 +80,11 @@ public class GeneticAlgorithm {
         return couples;
     }
 
+    /**
+     * Selects the best backpack in a tournament
+     * @param tournamentSize the size of the tournament
+     * @return the best backpack
+     */
     private Backpack tournament(int tournamentSize){
         List<Backpack> tournament = new ArrayList<>();
         Random random = new Random();
@@ -79,6 +95,11 @@ public class GeneticAlgorithm {
         return tournament.stream().max(Comparator.comparingInt(Backpack::getFitness)).orElse(null);
     }
 
+    /**
+     * Performs the standard crossover operation
+     * @param parents the parents
+     * @return a list of backpacks
+     */
     private List<Backpack> crossover(List<Couple> parents) {
         List<Backpack> newPop = new ArrayList<>();
         RandomSelector r = new RandomSelector();
@@ -107,6 +128,11 @@ public class GeneticAlgorithm {
         return newPop;
     }
 
+    /**
+     * Performs the one-point crossover operation
+     * @param parents the parents
+     * @return a list of backpacks
+     */
     private List<Backpack> onePointCrossover(List<Couple> parents) {
         List<Backpack> newPop = new ArrayList<>();
         Random random = new Random();
@@ -134,7 +160,13 @@ public class GeneticAlgorithm {
         return newPop;
     }
 
-    private List<Backpack> multiPointCrossover(List<Couple> parents, int numPoints) {
+    /**
+     * Performs the multi-points crossover operation
+     * @param parents the parents
+     * @param numPoints the number of crossover points
+     * @return a list of backpacks
+     */
+    private List<Backpack> multiPointsCrossover(List<Couple> parents, int numPoints) {
         List<Backpack> newPop = new ArrayList<>();
         Random random = new Random();
         int size = items.size();
@@ -172,6 +204,11 @@ public class GeneticAlgorithm {
         return newPop;
     }
 
+    /**
+     * Performs the standard mutation operation
+     * @param backpack the backpack to mutate
+     * @return the mutated backpack
+     */
     private Backpack mutation(Backpack backpack) {
         List<Boolean> newSolution = new ArrayList<>(backpack.getSolution());
         Random random = new Random();
@@ -181,6 +218,11 @@ public class GeneticAlgorithm {
         return backpack;
     }
 
+    /**
+     * Performs the swap mutation operation
+     * @param backpack the backpack to mutate
+     * @return the mutated backpack
+     */
     private Backpack mutationSwap(Backpack backpack) {
         List<Boolean> newSolution = new ArrayList<>(backpack.getSolution());
         Random random = new Random();
@@ -203,14 +245,28 @@ public class GeneticAlgorithm {
         return backpack;
     }
 
+    /**
+     * Returns the best backpack in a population
+     * @param population the population
+     * @return the best backpack
+     */
     private Backpack getBest(List<Backpack> population) {
         return population.stream().max(Comparator.comparingInt(Backpack::getFitness)).orElse(null);
     }
 
+    /**
+     * Returns the worst backpack in a population
+     * @param population the population
+     * @return the worst backpack
+     */
     private Backpack getWorst(List<Backpack> population) {
         return population.stream().min(Comparator.comparingInt(Backpack::getFitness)).orElse(null);
     }
 
+    /**
+     * Replaces the worst backpack in the new population with the best backpack in current population
+     * @param newPopulation the new population
+     */
     private void replace(List<Backpack> newPopulation) {
         Backpack worst = getWorst(newPopulation);
         Backpack best = getBest(this.population);
@@ -220,6 +276,16 @@ public class GeneticAlgorithm {
         }
     }
 
+    /**
+     * Solves the backpack problem using a genetic algorithm
+     * @param s the selection method
+     * @param m the mutation method
+     * @param c the crossover method
+     * @param r the repair method
+     * @param mutationRate the mutation rate
+     * @param elitistRate the elitist rate
+     * @return a list of backpacks representing the best solution at each generation
+     */
     public List<Backpack> solveVariant(String s, String m, String c, String r, double mutationRate, double elitistRate) {
         List<Backpack> newPopulation;
         List<Backpack> solutions = new LinkedList<>();
@@ -232,7 +298,7 @@ public class GeneticAlgorithm {
             newPopulation = switch (c) {
                 case "crossover" -> crossover(parents);
                 case "onepoint" -> onePointCrossover(parents);
-                case "multipoints" -> multiPointCrossover(parents, 2);
+                case "multipoints" -> multiPointsCrossover(parents, 2);
                 default -> crossover(parents);
             };
 
