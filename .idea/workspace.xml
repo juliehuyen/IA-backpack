@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ffa8677e-60a9-4b69-b50f-c4510a0778af" name="Changes" comment="⚡️ Préparation des mains">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main1/Main1A.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main1/Main1B.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main1/Main1C.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main2/Main2A.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main2/Main2C.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main3/Main3A.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main3/Main3B.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main3/Main3C.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Backpack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/algorithm/Backpack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Couple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/algorithm/Couple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/algorithm/GeneticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/algorithm/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/MainTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/MainTest2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/main2/Main2B.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/PerformanceChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dauphine/juliejoelle/display/PerformanceChart.java" afterDir="false" />
-    </list>
+    <list default="true" id="ffa8677e-60a9-4b69-b50f-c4510a0778af" name="Changes" comment="⚡️ Préparation des mains" />
     <list id="54e4ea6b-8a3c-4ef1-9677-d0b56288d7fd" name="Changes by 24208" comment="" />
     <list id="f1a1ffce-0665-480c-9cbd-2c69f503ffee" name="Changes by joell" comment="" />
     <list id="8fc03c2a-c90e-4a01-855b-5f65c3fa24c5" name="Changes by Joëlle" comment="" />
@@ -166,7 +148,7 @@
       <workItem from="1718806875947" duration="8762000" />
       <workItem from="1718818369131" duration="1180000" />
       <workItem from="1719238777696" duration="24215000" />
-      <workItem from="1719295551718" duration="18103000" />
+      <workItem from="1719295551718" duration="18130000" />
     </task>
     <task id="LOCAL-00001" summary="✨ Initialize Object and Backpack classes">
       <option name="closed" value="true" />
@@ -216,11 +198,30 @@
       <option name="project" value="LOCAL" />
       <updated>1719263481127</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="⚡️ Préparation des mains">
+      <option name="closed" value="true" />
+      <created>1719329049693</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1719329049693</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="✨ Initialize Object and Backpack classes" />

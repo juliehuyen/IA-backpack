@@ -7,10 +7,13 @@ import com.dauphine.juliejoelle.display.PerformanceChart;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Jeu de données 1 (aléatoire)
+ * Choix de paramètres 3
+ */
 public class Main1C {
     final static int NB_ITEMS = 40;
     final static int COSTS_SIZE = 8;
@@ -51,12 +54,13 @@ public class Main1C {
         HashMap<String, List<Double>> moyennesMap = new HashMap<>();
         HashMap<String, List<Double>> ecartTypesMap = new HashMap<>();
 
-        // Solve the problem
-        List<String> selections = Arrays.asList("selection", "tournament");
-        List<String> mutations = Arrays.asList("mutation", "swap");
-        List<String> crossovers = Arrays.asList("crossover", "onepoint","multipoints");
-        List<String> repairs = Arrays.asList("repair", "weight");
         /******** POUR TESTER TOUS LES VARIANTS ********/
+        // Solve the problem
+//        List<String> selections = Arrays.asList("selection", "tournament");
+//        List<String> mutations = Arrays.asList("mutation", "swap");
+//        List<String> crossovers = Arrays.asList("crossover", "onepoint","multipoints");
+//        List<String> repairs = Arrays.asList("repair", "weight");
+
 //        for (String s : selections) {
 //            for (String m : mutations) {
 //                for (String c : crossovers) {
@@ -92,6 +96,7 @@ public class Main1C {
 //                }
 //            }
 //        }
+        /**********************************/
 
         /******** POUR TESTER LES VARIANTS SELECTIONNES ********/
         // Variant 1

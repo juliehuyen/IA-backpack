@@ -11,6 +11,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Jeu de données 2 : (connu)
+ * Choix de paramètres 1
+ */
 public class Main2A {
     final static int NB_ITEMS = 6;
     final static int COSTS_SIZE = 10;
@@ -50,12 +54,13 @@ public class Main2A {
         HashMap<String, List<Double>> moyennesMap = new HashMap<>();
         HashMap<String, List<Double>> ecartTypesMap = new HashMap<>();
 
-        // Solve the problem
-        List<String> selections = Arrays.asList("selection", "tournament");
-        List<String> mutations = Arrays.asList("mutation", "swap");
-        List<String> crossovers = Arrays.asList("crossover", "onepoint","multipoints");
-        List<String> repairs = Arrays.asList("repair", "weight");
         /******** POUR TESTER TOUS LES VARIANTS ********/
+        // Solve the problem
+//        List<String> selections = Arrays.asList("selection", "tournament");
+//        List<String> mutations = Arrays.asList("mutation", "swap");
+//        List<String> crossovers = Arrays.asList("crossover", "onepoint","multipoints");
+//        List<String> repairs = Arrays.asList("repair", "weight");
+
 //        for (String s : selections) {
 //            for (String m : mutations) {
 //                for (String c : crossovers) {
@@ -91,7 +96,7 @@ public class Main2A {
 //                }
 //            }
 //        }
-
+        /**********************************/
         /******** POUR TESTER LES VARIANTS SELECTIONNES ********/
         // Variant 1
         ga = new GeneticAlgorithm(backpack, items, POPULATION_SIZE, NB_GENERATIONS);
